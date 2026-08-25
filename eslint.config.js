@@ -3,6 +3,9 @@ import reactPlugin from "eslint-plugin-react";
 import globals from "globals"; // 1. Import the globals package
 
 export default [
+  {
+    ignores: ["dist/", "coverage/", "node_modules/"],
+  },
   js.configs.recommended,
   {
     files: ["**/*.{js,jsx,mjs,cjs,ts,tsx}"],
@@ -23,8 +26,19 @@ export default [
     rules: {
       "react/react-in-jsx-scope": "off",
       "react/jsx-uses-react": "off",
+      "react/jsx-uses-vars": "error",
       "no-unused-vars": "warn",
-      // ... your other rules
+    },
+  },
+  {
+    files: ["src/**/*.test.{js,jsx}"],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        describe: "readonly",
+        expect: "readonly",
+        it: "readonly",
+      },
     },
   },
 ];

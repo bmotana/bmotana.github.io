@@ -2,7 +2,7 @@ export default function LoadingScreen({ isFadingOut = false }) {
   return (
     <div
       className={[
-        'fixed inset-0 z-9999 grid place-items-center text-zinc-50',
+        'fixed inset-0 z-[9999] grid place-items-center text-zinc-50',
         'bg-linear-to-br from-violet-950 via-fuchsia-950 to-indigo-950',
         'transition-opacity duration-500 ease-out motion-reduce:transition-none',
         isFadingOut ? 'opacity-0' : 'opacity-100',

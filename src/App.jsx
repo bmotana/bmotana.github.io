@@ -17,10 +17,12 @@ export default function App() {
   useEffect(() => {
     const MIN_LOADING_MS = 1200
     const FADE_MS = 1000
+    const MAX_WAIT_MS = 3000
     let minLoadingDone = false
     let windowLoaded = document.readyState === 'complete'
     let fadeTimeoutId = 0
     let readyTimeoutId = 0
+    let maxTimeoutId = 0
 
     const startFadeOut = () => {
       if (!minLoadingDone || !windowLoaded) return
@@ -39,6 +41,12 @@ export default function App() {
       startFadeOut()
     }, MIN_LOADING_MS)
 
+    maxTimeoutId = window.setTimeout(() => {
+      windowLoaded = true
+      minLoadingDone = true
+      startFadeOut()
+    }, MAX_WAIT_MS)
+
     if (windowLoaded) {
       startFadeOut()
     } else {
@@ -49,6 +57,7 @@ export default function App() {
       window.removeEventListener('load', handleWindowLoad)
       clearTimeout(fadeTimeoutId)
       clearTimeout(readyTimeoutId)
+      clearTimeout(maxTimeoutId)
     }
   }, [])
 
@@ -225,7 +234,7 @@ export default function App() {
       <div
         ref={cursorRef}
         aria-hidden="true"
-        className="pointer-events-none fixed left-0 top-0 z-120 hidden rounded-full bg-linear-to-br from-zinc-900 via-violet-700 to-fuchsia-400 shadow-[0_0_24px_rgba(154,95,255,0.5)] mix-blend-screen will-change-transform md:block"
+        className="pointer-events-none fixed left-0 top-0 z-[120] hidden rounded-full bg-linear-to-br from-zinc-900 via-violet-700 to-fuchsia-400 shadow-[0_0_24px_rgba(154,95,255,0.5)] mix-blend-screen will-change-transform md:block"
         style={{ animation: 'cursor-breathe 2.2s ease-in-out infinite' }}
       >
         <span
@@ -239,7 +248,7 @@ export default function App() {
         <div className="absolute inset-0 bg-zinc-950" />
         <div
           ref={ambientLayerRef}
-          className="absolute left-1/2 top-1/2 h-288 w-6xl -translate-x-1/2 -translate-y-1/2 rounded-full bg-linear-to-r from-fuchsia-500/28 via-indigo-500/25 to-sky-400/24 will-change-transform"
+          className="absolute left-1/2 top-1/2 h-[72rem] w-[72rem] max-w-6xl -translate-x-1/2 -translate-y-1/2 rounded-full bg-linear-to-r from-fuchsia-500/28 via-indigo-500/25 to-sky-400/24 will-change-transform"
         />
       </div>
       {phase !== 'ready' && <LoadingScreen isFadingOut={phase === 'fading'} />}
