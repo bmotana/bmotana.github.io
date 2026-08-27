@@ -5,6 +5,7 @@ export default function Hero({ isIntroReady = false }) {
   const sectionRef = useRef(null)
   const glassRef = useRef(null)
   const textRef = useRef(null)
+  const hasAnimatedRef = useRef(false)
 
   useEffect(() => {
     const section = sectionRef.current
@@ -25,7 +26,8 @@ export default function Hero({ isIntroReady = false }) {
   }, [])
 
   useEffect(() => {
-    if (!isIntroReady) return undefined
+    if (!isIntroReady || hasAnimatedRef.current) return undefined
+    hasAnimatedRef.current = true
 
     const section = sectionRef.current
     const glass = glassRef.current

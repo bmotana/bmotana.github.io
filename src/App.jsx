@@ -16,16 +16,26 @@ export default function App() {
 
   useEffect(() => {
     const MIN_LOADING_MS = 1200
-    const FADE_MS = 1000
+    const FADE_MS = 500
     const MAX_WAIT_MS = 3000
     let minLoadingDone = false
     let windowLoaded = document.readyState === 'complete'
     let fadeTimeoutId = 0
     let readyTimeoutId = 0
     let maxTimeoutId = 0
+    let isFadingStarted = false
+
+    const cleanupTimers = () => {
+      clearTimeout(fadeTimeoutId)
+      clearTimeout(maxTimeoutId)
+    }
 
     const startFadeOut = () => {
+      if (isFadingStarted) return
       if (!minLoadingDone || !windowLoaded) return
+
+      isFadingStarted = true
+      cleanupTimers()
 
       setPhase('fading')
       readyTimeoutId = window.setTimeout(() => setPhase('ready'), FADE_MS)
@@ -42,6 +52,7 @@ export default function App() {
     }, MIN_LOADING_MS)
 
     maxTimeoutId = window.setTimeout(() => {
+      if (isFadingStarted) return
       windowLoaded = true
       minLoadingDone = true
       startFadeOut()
@@ -55,9 +66,8 @@ export default function App() {
 
     return () => {
       window.removeEventListener('load', handleWindowLoad)
-      clearTimeout(fadeTimeoutId)
+      cleanupTimers()
       clearTimeout(readyTimeoutId)
-      clearTimeout(maxTimeoutId)
     }
   }, [])
 
