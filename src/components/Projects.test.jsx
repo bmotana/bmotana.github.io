@@ -6,6 +6,7 @@ describe('Projects', () => {
     render(<Projects />)
 
     expect(screen.getByRole('heading', { name: 'Selected work' })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: 'Project One' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Developer Portfolio' })).toBeInTheDocument()
+    expect(screen.getByText(/responsive layout, smooth navigation/i)).toBeInTheDocument()
   })
 })

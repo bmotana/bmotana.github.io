@@ -1,37 +1,14 @@
-// Edit this file to add your own projects.
-// Each object becomes one card on the page.
+// Add your published projects here. Each object becomes one card on the page.
 const projects = [
   {
     id: 1,
-    title: 'Project One',
-    description: 'A short description of what this project does and the problem it solves.',
-    tags: ['React', 'Node.js', 'Tailwind'],
-    liveUrl: '#',
-    repoUrl: '#',
-  },
-  {
-    id: 2,
-    title: 'Project Two',
-    description: 'A short description of what this project does and the problem it solves.',
-    tags: ['Next.js', 'TypeScript', 'Vercel'],
-    liveUrl: '#',
-    repoUrl: '#',
-  },
-  {
-    id: 3,
-    title: 'Project Three',
-    description: 'A short description of what this project does and the problem it solves.',
-    tags: ['Vue.js', 'PostgreSQL', 'Docker'],
-    liveUrl: '#',
-    repoUrl: '#',
-  },
-  {
-    id: 4,
-    title: 'Project Four',
-    description: 'A short description of what this project does and the problem it solves.',
-    tags: ['Astro', 'MDX', 'Cloudflare'],
-    liveUrl: '#',
-    repoUrl: '#',
+    title: 'Developer Portfolio',
+    description:
+      'A fast, accessible home for recruiters and collaborators to explore my work, technical focus, and ways to get in touch.',
+    outcome: 'Built around responsive layout, smooth navigation, and motion that respects reduced-motion preferences.',
+    tags: ['React', 'Vite', 'Tailwind CSS', 'GSAP'],
+    liveUrl: 'https://bmotana.github.io/',
+    repoUrl: 'https://github.com/bmotana/bmotana.github.io',
   },
 ]
 

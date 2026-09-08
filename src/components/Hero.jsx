@@ -87,7 +87,7 @@ export default function Hero({ isIntroReady = false }) {
               Ben Motana
             </span>
           </h1>
-          <p className="mx-auto mb-12 max-w-2xl text-lg leading-8 text-zinc-400 sm:text-xl">
+          <p className="mx-auto mb-12 max-w-2xl text-lg leading-8 text-zinc-300 sm:text-xl">
             I build fast, accessible, and beautifully designed web applications.
             Currently focused on React, Node.js, and developer tooling.
           </p>
@@ -95,7 +95,7 @@ export default function Hero({ isIntroReady = false }) {
             <a href="#projects" className="rounded-lg bg-indigo-600 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-indigo-500">
               View my work
             </a>
-            <a href="mailto:bmotana1@gmail.com" id="contact" className="rounded-lg border border-zinc-700 px-6 py-3 text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500 hover:text-zinc-100">
+            <a href="#contact" className="rounded-lg border border-zinc-600 px-6 py-3 text-sm font-medium text-zinc-200 transition-colors hover:border-zinc-400 hover:text-zinc-50">
               Get in touch
             </a>
           </div>

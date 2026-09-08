@@ -77,7 +77,7 @@ export default function About() {
             Building products that feel smooth and useful
           </h2>
         </div>
-        <div ref={textRef} className="space-y-4 text-zinc-400">
+        <div ref={textRef} className="space-y-4 text-zinc-300">
           <p>
             I am a frontend-focused developer who enjoys turning ideas into
             clean, responsive, and accessible web experiences.
@@ -95,6 +95,5 @@ export default function About() {
     </section>
   )
 }
-
 
 

@@ -30,7 +30,7 @@ const capabilities = [
 ]
 
 export default function Services() {
-  const [isHovered, setIsHovered] = useState(false)
+  const [isPaused, setIsPaused] = useState(false)
   const trackRef = useRef(null)
   const offsetRef = useRef(0)
   const speedRef = useRef(34)
@@ -54,7 +54,7 @@ export default function Services() {
       const deltaSeconds = (time - lastTimeRef.current) / 1000
       lastTimeRef.current = time
 
-      const targetSpeed = isHovered ? 68 : 34
+      const targetSpeed = isPaused ? 0 : 14
       const easing = 1 - Math.exp(-8 * deltaSeconds)
       speedRef.current += (targetSpeed - speedRef.current) * easing
 
@@ -73,7 +73,7 @@ export default function Services() {
       animationFrameRef.current = null
       lastTimeRef.current = 0
     }
-  }, [isHovered])
+  }, [isPaused])
 
   return (
     <section id="services" className="mx-auto max-w-5xl px-6 py-24">
@@ -102,8 +102,12 @@ export default function Services() {
 
       <div
         className="relative mt-10 overflow-hidden"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        tabIndex="0"
+        aria-label="Technical skills. Animation pauses while focused or hovered."
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        onFocus={() => setIsPaused(true)}
+        onBlur={() => setIsPaused(false)}
       >
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-linear-to-r from-zinc-950/45 via-zinc-950/10 to-transparent" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-linear-to-l from-zinc-950/45 via-zinc-950/10 to-transparent" />
