@@ -45,3 +45,7 @@ coverage/
 # OS metadata
 .DS_Store
 Thumbs.db
+
+# Local notes / tooling
+note.md
+.playwright-mcp/
