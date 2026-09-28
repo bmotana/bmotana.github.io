@@ -88,8 +88,9 @@ export default function Hero({ isIntroReady = false }) {
             </span>
           </h1>
           <p className="mx-auto mb-12 max-w-2xl text-lg leading-8 text-zinc-300 sm:text-xl">
-            I build fast, accessible, and beautifully designed web applications.
-            Currently focused on React, Node.js, and developer tooling.
+            I work across web development, data science, and cybersecurity —
+            building useful software, turning data into insight, and thinking
+            carefully about security along the way.
           </p>
           <div className="flex flex-col items-center justify-center gap-5 sm:flex-row">
             <a href="#projects" className="rounded-lg bg-indigo-600 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-indigo-500">

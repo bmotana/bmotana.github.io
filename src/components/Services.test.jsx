@@ -6,6 +6,8 @@ describe('Services', () => {
     render(<Services />)
 
     expect(screen.getByRole('heading', { name: 'How I can help' })).toBeInTheDocument()
-    expect(screen.getByText('Frontend Development')).toBeInTheDocument()
+    expect(screen.getByText('Web Development')).toBeInTheDocument()
+    expect(screen.getByText('Data Science')).toBeInTheDocument()
+    expect(screen.getByText('Cybersecurity')).toBeInTheDocument()
   })
 })

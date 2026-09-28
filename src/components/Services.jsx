@@ -2,31 +2,35 @@ import { useEffect, useRef, useState } from 'react'
 
 const services = [
   {
-    title: 'Frontend Development',
+    title: 'Web Development',
     description:
-      'Responsive, component-driven interfaces built with a focus on speed, accessibility, and clean UX.',
+      'Responsive, component-driven interfaces and full-stack features built for speed, accessibility, and clean UX.',
   },
   {
-    title: 'UI Implementation',
+    title: 'Data Science',
     description:
-      'Turning design ideas into polished, production-ready pages with consistent spacing, typography, and interaction.',
+      'Exploring datasets, building analysis workflows, and turning raw numbers into clear, useful insights.',
   },
   {
-    title: 'Performance Optimization',
+    title: 'Cybersecurity',
     description:
-      'Improving load time and runtime performance with practical optimizations that keep sites fast and smooth.',
+      'Thinking about threats, secure design, and practical defenses so systems stay reliable and harder to break.',
   },
 ]
 
 const capabilities = [
   'React',
   'JavaScript',
+  'Python',
+  'SQL',
   'Tailwind CSS',
   'Node.js',
+  'Data Analysis',
+  'Network Security',
   'REST APIs',
-  'Responsive Design',
   'Git/GitHub',
-  'Deployment',
+  'Linux',
+  'Threat Awareness',
 ]
 
 export default function Services() {

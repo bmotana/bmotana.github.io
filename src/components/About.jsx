@@ -74,21 +74,24 @@ export default function About() {
             ref={headingRef}
             className="text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl"
           >
-            Building products that feel smooth and useful
+            Web development, data science, and cybersecurity
           </h2>
         </div>
         <div ref={textRef} className="space-y-4 text-zinc-300">
           <p>
-            I am a frontend-focused developer who enjoys turning ideas into
-            clean, responsive, and accessible web experiences.
+            I am a developer exploring the overlap between building products,
+            analyzing data, and understanding how systems stay secure.
           </p>
           <p>
-            My current stack includes React, Tailwind CSS, and Node.js. I care
-            about performance, thoughtful UI details, and maintainable code.
+            On the web side I work with React, Tailwind CSS, and Node.js. In
+            data science I focus on Python, analysis, and clear communication of
+            findings. In cybersecurity I study how systems fail and how to
+            protect them.
           </p>
           <p>
-            Outside of coding, I am usually learning new tools, improving design
-            skills, and shipping small projects to keep getting better.
+            Outside of projects, I am usually learning new tools, sharpening
+            fundamentals across these areas, and shipping small experiments to
+            keep getting better.
           </p>
         </div>
       </div>

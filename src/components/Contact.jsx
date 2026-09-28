@@ -12,7 +12,7 @@ export default function Contact() {
           Have a project in mind?
         </h2>
         <p className="relative mx-auto mt-4 max-w-xl leading-7 text-zinc-300">
-          I’m always open to discussing thoughtful web experiences, useful tools, and new opportunities.
+          I’m always open to discussing web projects, data work, cybersecurity challenges, and new opportunities.
         </p>
         <a
           href={`mailto:${email}`}

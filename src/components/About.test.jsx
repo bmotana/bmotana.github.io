@@ -6,7 +6,9 @@ describe('About', () => {
     render(<About />)
 
     expect(
-      screen.getByRole('heading', { name: 'Building products that feel smooth and useful' }),
+      screen.getByRole('heading', {
+        name: 'Web development, data science, and cybersecurity',
+      }),
     ).toBeInTheDocument()
   })
 })
