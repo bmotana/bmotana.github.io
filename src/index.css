@@ -5,15 +5,15 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 96px;
+  scroll-padding-top: 140px;
+}
+
+@media (min-width: 640px) {
+  html {
+    scroll-padding-top: 96px;
+  }
 }
 
 body {
   font-family: 'Inter', sans-serif;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  * {
-    cursor: none !important;
-  }
 }

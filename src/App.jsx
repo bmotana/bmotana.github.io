@@ -12,8 +12,6 @@ import Lenis from 'lenis'
 export default function App() {
   const [phase, setPhase] = useState('loading') // loading -> fading -> ready
   const ambientLayerRef = useRef(null)
-  const cursorRef = useRef(null)
-  const cursorArrowRef = useRef(null)
 
   useEffect(() => {
     const MIN_LOADING_MS = 1200
@@ -99,7 +97,8 @@ export default function App() {
       if (!target) return
 
       event.preventDefault()
-      lenis.scrollTo(target, { offset: -96, duration: 1.3, lock: true })
+      const navOffset = window.matchMedia('(min-width: 640px)').matches ? -96 : -140
+      lenis.scrollTo(target, { offset: navOffset, duration: 1.3, lock: true })
       window.history.replaceState(null, '', id)
     }
 
@@ -154,107 +153,8 @@ export default function App() {
     return () => cancelAnimationFrame(frameId)
   }, [])
 
-  useEffect(() => {
-    const cursor = cursorRef.current
-    const arrow = cursorArrowRef.current
-    if (!cursor || !arrow) return
-
-    let frameId = 0
-    let clickTimeoutId = 0
-    let isInGrowZone = false
-    const pointer = { x: window.innerWidth / 2, y: window.innerHeight / 2 }
-    const render = { x: pointer.x, y: pointer.y, size: 28, scale: 1, arrow: 0 }
-    const target = { size: 28, scale: 1, arrow: 0 }
-
-    const onPointerMove = (event) => {
-      pointer.x = event.clientX
-      pointer.y = event.clientY
-
-      const growZone = event.target.closest('[data-cursor-grow="true"]')
-      isInGrowZone = Boolean(growZone)
-      target.size = isInGrowZone ? 42 : 28
-      target.scale = isInGrowZone ? 1.12 : 1
-    }
-
-    const onPointerLeave = () => {
-      target.size = 28
-      target.scale = 1
-      target.arrow = 0
-    }
-
-    const onPointerDown = (event) => {
-      const interactiveTarget = event.target.closest(
-        'a, button, [role="button"], input[type="button"], input[type="submit"]',
-      )
-      if (!interactiveTarget) return
-
-      target.arrow = 1
-      target.size = isInGrowZone ? 46 : 34
-      target.scale = isInGrowZone ? 1.18 : 1.06
-
-      if (clickTimeoutId) clearTimeout(clickTimeoutId)
-      clickTimeoutId = window.setTimeout(() => {
-        target.arrow = 0
-        target.size = isInGrowZone ? 42 : 28
-        target.scale = isInGrowZone ? 1.12 : 1
-      }, 260)
-    }
-
-    const animate = () => {
-      render.x += (pointer.x - render.x) * 0.24
-      render.y += (pointer.y - render.y) * 0.24
-      render.size += (target.size - render.size) * 0.09
-      render.scale += (target.scale - render.scale) * 0.08
-      render.arrow += (target.arrow - render.arrow) * 0.18
-
-      cursor.style.transform = `translate3d(${render.x}px, ${render.y}px, 0) translate(-50%, -50%) scale(${render.scale})`
-      cursor.style.width = `${render.size}px`
-      cursor.style.height = `${render.size}px`
-      cursor.style.borderRadius = `${50 - render.arrow * 16}% ${50 + render.arrow * 8}% ${50 - render.arrow * 14}% ${50 + render.arrow * 10}%`
-      arrow.style.opacity = `${render.arrow}`
-      arrow.style.transform = `translate(-50%, -50%) scale(${0.72 + render.arrow * 0.42}) rotate(${render.arrow * 10}deg)`
-
-      frameId = requestAnimationFrame(animate)
-    }
-
-    window.addEventListener('pointermove', onPointerMove)
-    window.addEventListener('pointerleave', onPointerLeave)
-    window.addEventListener('pointerdown', onPointerDown)
-    frameId = requestAnimationFrame(animate)
-
-    return () => {
-      window.removeEventListener('pointermove', onPointerMove)
-      window.removeEventListener('pointerleave', onPointerLeave)
-      window.removeEventListener('pointerdown', onPointerDown)
-      if (clickTimeoutId) clearTimeout(clickTimeoutId)
-      cancelAnimationFrame(frameId)
-    }
-  }, [])
-
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-zinc-950 text-zinc-100">
-      <style>
-        {`
-          @keyframes cursor-breathe {
-            0% { opacity: 0.84; filter: saturate(1); }
-            50% { opacity: 1; filter: saturate(1.2); }
-            100% { opacity: 0.84; filter: saturate(1); }
-          }
-        `}
-      </style>
-      <div
-        ref={cursorRef}
-        aria-hidden="true"
-        className="pointer-events-none fixed left-0 top-0 z-[120] hidden rounded-full bg-linear-to-br from-zinc-900 via-violet-700 to-fuchsia-400 shadow-[0_0_24px_rgba(154,95,255,0.5)] mix-blend-screen will-change-transform md:block"
-        style={{ animation: 'cursor-breathe 2.2s ease-in-out infinite' }}
-      >
-        <span
-          ref={cursorArrowRef}
-          className="pointer-events-none absolute left-1/2 top-1/2 text-sm font-semibold text-white opacity-0"
-        >
-          ↗
-        </span>
-      </div>
       <div className="pointer-events-none fixed inset-0 z-0" aria-hidden="true">
         <div className="absolute inset-0 bg-zinc-950" />
         <div
