@@ -23,7 +23,12 @@ describe('Footer', () => {
     expect(layout?.className).toMatch(/sm:text-left/)
     expect(layout?.className).toMatch(/gap-4/)
 
-    const github = screen.getByRole('link', { name: 'GitHub' })
-    expect(github.className).toMatch(/min-h-10/)
+    for (const link of [
+      screen.getByRole('link', { name: 'GitHub' }),
+      screen.getByRole('link', { name: 'LinkedIn' }),
+      screen.getByRole('link', { name: 'Email' }),
+    ]) {
+      expect(link).toHaveClass('min-h-11', 'min-w-11')
+    }
   })
 })

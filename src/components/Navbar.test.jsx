@@ -15,23 +15,26 @@ describe('Navbar', () => {
     expect(screen.getByAltText('Profile Picture')).toHaveAttribute('src', 'https://github.com/bmotana.png')
   })
 
-  it('uses a stacked mobile layout that expands on larger screens', () => {
-    setViewport(VIEWPORTS.mobile)
+  it('keeps a compact single-row layout with accessible mobile targets', () => {
+    setViewport(VIEWPORTS.mobileCompact)
     render(<Navbar />)
 
     const nav = screen.getByRole('navigation', { name: 'Primary' })
-    expect(nav.className).toMatch(/flex-col/)
-    expect(nav.className).toMatch(/items-center/)
-    expect(nav.className).toMatch(/text-center/)
-    expect(nav.className).toMatch(/sm:flex-row/)
-    expect(nav.className).toMatch(/sm:text-left/)
-    expect(nav.className).toMatch(/gap-3/)
+    expect(nav.className).toMatch(/flex-row/)
+    expect(nav.className).toMatch(/justify-between/)
+    expect(nav.className).not.toMatch(/flex-col/)
+    expect(screen.getByAltText('Profile Picture').className).toMatch(/block/)
 
-    const projectsLink = screen.getByRole('link', { name: 'Projects' })
-    expect(projectsLink.className).toMatch(/min-h-10/)
+    for (const link of [
+      screen.getByRole('link', { name: 'Projects' }),
+      screen.getByRole('link', { name: 'Contact' }),
+      screen.getByRole('link', { name: 'GitHub ↗' }),
+    ]) {
+      expect(link).toHaveClass('min-h-11', 'min-w-11')
+    }
 
     const links = screen.getByRole('list')
-    expect(links.className).toMatch(/justify-center/)
-    expect(links.className).toMatch(/sm:justify-end/)
+    expect(links.className).toMatch(/flex-nowrap/)
+    expect(screen.getByRole('banner')).toHaveAttribute('data-site-navbar')
   })
 })

@@ -80,8 +80,8 @@ export default function Services() {
   }, [isPaused])
 
   return (
-    <section id="services" className="mx-auto max-w-5xl px-6 py-24">
-      <div className="mb-12">
+    <section id="services" className="mx-auto max-w-5xl px-6 py-12 sm:py-24">
+      <div className="mb-8 sm:mb-12">
         <p className="mb-3 text-sm font-medium tracking-widest text-indigo-400 uppercase">
           Services + capabilities
         </p>
@@ -90,7 +90,7 @@ export default function Services() {
         </h2>
       </div>
 
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-6">
         {services.map((service) => (
           <article
             key={service.title}
@@ -105,7 +105,7 @@ export default function Services() {
       </div>
 
       <div
-        className="relative mt-10 overflow-hidden"
+        className="relative mt-7 overflow-hidden sm:mt-10"
         tabIndex="0"
         aria-label="Technical skills. Animation pauses while focused or hovered."
         onMouseEnter={() => setIsPaused(true)}

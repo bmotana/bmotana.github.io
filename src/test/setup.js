@@ -28,6 +28,10 @@ vi.mock('gsap', () => {
       }),
       set: vi.fn(),
       to: vi.fn(),
+      killTweensOf: vi.fn(),
+      utils: {
+        clamp: vi.fn((min, max, value) => Math.min(max, Math.max(min, value))),
+      },
       timeline: vi.fn(timeline),
       registerPlugin: vi.fn(),
     },

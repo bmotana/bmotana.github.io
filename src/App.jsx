@@ -72,11 +72,14 @@ export default function App() {
 
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.5,
+      duration: 1.1,
       smoothWheel: true,
       wheelMultiplier: 0.9,
-      touchMultiplier: 1.1,
-      lerp: 0.08,
+      // Keep touch scrolling native so iOS/Android retain fling and edge bounce.
+      syncTouch: false,
+      touchMultiplier: 1,
+      overscroll: true,
+      lerp: 0.1,
     })
 
     let frameId = 0
@@ -97,7 +100,8 @@ export default function App() {
       if (!target) return
 
       event.preventDefault()
-      const navOffset = window.matchMedia('(min-width: 640px)').matches ? -96 : -140
+      const navbar = document.querySelector('[data-site-navbar]')
+      const navOffset = -(Math.ceil(navbar?.getBoundingClientRect().height ?? 0) + 8)
       lenis.scrollTo(target, { offset: navOffset, duration: 1.3, lock: true })
       window.history.replaceState(null, '', id)
     }
@@ -154,8 +158,8 @@ export default function App() {
   }, [])
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-zinc-950 text-zinc-100">
-      <div className="pointer-events-none fixed inset-0 z-0" aria-hidden="true">
+    <div className="app-shell relative overflow-x-clip bg-zinc-950 text-zinc-100">
+      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
         <div className="absolute inset-0 bg-zinc-950" />
         <div
           ref={ambientLayerRef}

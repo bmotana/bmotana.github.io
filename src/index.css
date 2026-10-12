@@ -5,7 +5,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 140px;
+  scroll-padding-top: 5rem;
 }
 
 @media (min-width: 640px) {
@@ -16,4 +16,44 @@ html {
 
 body {
   font-family: 'Inter', sans-serif;
+  overflow-x: clip;
+}
+
+.app-shell {
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+@keyframes preview-art-drift {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.035);
+  }
+}
+
+@keyframes preview-gradient-drift {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 100% 50%;
+  }
+}
+
+.project-preview {
+  background-size: 180% 180%;
+  animation: preview-gradient-drift 18s ease-in-out infinite alternate;
+}
+
+.project-preview-art {
+  animation: preview-art-drift 14s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-preview,
+  .project-preview-art {
+    animation: none;
+  }
 }

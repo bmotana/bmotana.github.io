@@ -10,9 +10,9 @@ function BrowserPreview({ title }) {
         <span className="h-1.5 w-1.5 rounded-full bg-emerald-400/70" />
         <span className="ml-2 h-1.5 w-24 rounded-full bg-zinc-700/80" />
       </div>
-      <div className="relative h-32 overflow-hidden bg-linear-to-br from-indigo-500/20 via-zinc-950 to-sky-400/10 p-4 sm:h-36">
-        <div className="absolute -right-8 -top-10 h-28 w-28 rounded-full bg-indigo-400/20 blur-2xl" />
-        <div className="relative">
+      <div className="project-preview relative h-32 overflow-hidden bg-linear-to-br from-indigo-500/20 via-zinc-950 to-sky-400/10 p-4 sm:h-36">
+        <div className="project-preview-art relative h-full">
+          <div className="absolute -right-8 -top-10 h-28 w-28 rounded-full bg-indigo-400/20 blur-2xl" />
           <div className="mb-3 h-2 w-16 rounded-full bg-indigo-300/70" />
           <div className="h-5 w-3/4 rounded bg-zinc-100/90" />
           <div className="mt-2 h-2 w-2/3 rounded bg-zinc-500/80" />
@@ -47,10 +47,10 @@ export default function ProjectCard({ title, description, outcome, tags, liveUrl
         ))}
       </ul>
       <div className="flex items-center gap-4 text-sm">
-        <a href={liveUrl} target="_blank" rel="noopener noreferrer" className="font-medium text-indigo-400 transition-colors hover:text-indigo-300">
+        <a href={liveUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-10 items-center font-medium text-indigo-400 transition-colors hover:text-indigo-300">
           Live demo ↗
         </a>
-        <a href={repoUrl} target="_blank" rel="noopener noreferrer" className="text-zinc-400 transition-colors hover:text-zinc-100">
+        <a href={repoUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-10 items-center text-zinc-400 transition-colors hover:text-zinc-100">
           Source code ↗
         </a>
       </div>

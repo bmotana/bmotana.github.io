@@ -68,35 +68,38 @@ export default function Hero({ isIntroReady = false }) {
   }, [isIntroReady])
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden px-6 py-12 text-center sm:py-16">
+    <section ref={sectionRef} className="relative overflow-hidden px-4 py-8 text-center sm:px-6 sm:py-16">
       <div
         ref={glassRef}
-        className="relative mx-auto max-w-5xl rounded-3xl border border-white/15 bg-white/5 px-10 py-16 opacity-0 shadow-[0_8px_40px_rgba(0,0,0,0.35)] backdrop-blur-md sm:px-16 sm:py-20"
+        className="relative mx-auto max-w-5xl rounded-3xl border border-white/15 bg-white/5 px-5 py-9 opacity-0 shadow-[0_8px_40px_rgba(0,0,0,0.35)] backdrop-blur-md min-[400px]:px-8 min-[400px]:py-12 sm:px-16 sm:py-20"
       >
         <div
           className="pointer-events-none absolute -inset-px rounded-3xl bg-linear-to-br from-white/15 via-transparent to-indigo-300/10 opacity-70"
           aria-hidden="true"
         />
         <div ref={textRef} className="opacity-0">
-          <p className="mb-6 text-sm font-medium tracking-widest text-indigo-400 uppercase">
+          <p className="mb-4 text-xs font-medium tracking-[0.16em] text-indigo-400 uppercase sm:mb-6 sm:text-sm sm:tracking-widest">
             Available for work
           </p>
-          <h1 className="mb-8 text-5xl font-bold tracking-tight text-zinc-50 sm:text-6xl">
-            Hi, I'm{' '}
-            <span className="bg-linear-to-r from-indigo-400 to-sky-400 bg-clip-text text-transparent">
-              Ben Motana
+          <h1 className="mb-5 text-2xl font-bold leading-tight tracking-tight text-zinc-50 min-[430px]:text-4xl sm:mb-8 sm:text-6xl">
+            Hi,{' '}
+            <span className="whitespace-nowrap">
+              I'm{' '}
+              <span className="bg-linear-to-r from-indigo-400 to-sky-400 bg-clip-text text-transparent">
+                Ben Motana
+              </span>
             </span>
           </h1>
-          <p className="mx-auto mb-12 max-w-2xl text-lg leading-8 text-zinc-300 sm:text-xl">
+          <p className="mx-auto mb-7 max-w-2xl text-base leading-7 text-zinc-300 sm:mb-12 sm:text-xl sm:leading-8">
             I work across web development, data science, and cybersecurity —
             building useful software, turning data into insight, and thinking
             carefully about security along the way.
           </p>
-          <div className="flex flex-col items-center justify-center gap-5 sm:flex-row">
-            <a href="#projects" className="rounded-lg bg-indigo-600 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-indigo-500">
+          <div className="flex flex-row flex-wrap items-center justify-center gap-3 sm:gap-5">
+            <a href="#projects" className="rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-indigo-500 sm:px-6">
               View my work
             </a>
-            <a href="#contact" className="rounded-lg border border-zinc-600 px-6 py-3 text-sm font-medium text-zinc-200 transition-colors hover:border-zinc-400 hover:text-zinc-50">
+            <a href="#contact" className="rounded-lg border border-zinc-600 px-5 py-3 text-sm font-medium text-zinc-200 transition-colors hover:border-zinc-400 hover:text-zinc-50 sm:px-6">
               Get in touch
             </a>
           </div>

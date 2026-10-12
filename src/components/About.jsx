@@ -63,9 +63,9 @@ export default function About() {
     <section
       ref={sectionRef}
       id="about"
-      className="mx-auto max-w-5xl px-6 py-24"
+      className="mx-auto max-w-5xl px-6 py-12 sm:py-24"
     >
-      <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-start">
+      <div className="grid gap-6 lg:grid-cols-[1.1fr_1fr] lg:items-start sm:gap-10">
         <div>
           <p className="mb-3 text-sm font-medium tracking-widest text-indigo-400 uppercase">
             About me

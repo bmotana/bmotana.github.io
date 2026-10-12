@@ -4,12 +4,12 @@ import ProjectCard from './ProjectCard'
 // .map() turns each object in projects.js into a <ProjectCard> component
 export default function Projects() {
   return (
-    <section id="projects" className="mx-auto max-w-5xl px-6 py-24">
-      <div className="mb-12">
+    <section id="projects" className="mx-auto max-w-5xl px-6 py-12 sm:py-24">
+      <div className="mb-8 sm:mb-12">
         <h2 className="text-3xl font-bold tracking-tight text-zinc-100">Selected work</h2>
         <p className="mt-2 text-zinc-300">A selection of shipped work and the thinking behind it.</p>
       </div>
-      <div className="grid gap-6 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6">
         {projects.map((project) => (
           <ProjectCard
             key={project.id}
